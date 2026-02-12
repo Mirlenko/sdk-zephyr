@@ -2626,6 +2626,34 @@ struct bt_hci_rp_le_read_local_supported_capabilities {
 	uint8_t  tx_snr_capability;
 } __packed;
 
+#define BT_HCI_OP_LE_CS_READ_LOCAL_SUPPORTED_CAPABILITIES_V2 BT_OP(BT_OGF_LE, 0x00A5) /* 0x20A5 */
+
+struct bt_hci_rp_le_read_local_supported_capabilities_v2 {
+	uint8_t  status;
+	uint8_t  num_config_supported;
+	uint16_t max_consecutive_procedures_supported;
+	uint8_t  num_antennas_supported;
+	uint8_t  max_antenna_paths_supported;
+	uint8_t  roles_supported;
+	uint8_t  modes_supported;
+	uint8_t  rtt_capability;
+	uint8_t  rtt_aa_only_n;
+	uint8_t  rtt_sounding_n;
+	uint8_t  rtt_random_payload_n;
+	uint16_t nadm_sounding_capability;
+	uint16_t nadm_random_capability;
+	uint8_t  cs_sync_phys_supported;
+	uint16_t subfeatures_supported;
+	uint16_t t_ip1_times_supported;
+	uint16_t t_ip2_times_supported;
+	uint16_t t_fcs_times_supported;
+	uint16_t t_pm_times_supported;
+	uint8_t  t_sw_time_supported;
+	uint8_t  tx_snr_capability;
+	uint16_t  t_ip2_ipt_times_supported;
+	uint8_t  t_sw_ipt_time_supported;
+} __packed;
+
 #define BT_HCI_OP_LE_CS_READ_REMOTE_SUPPORTED_CAPABILITIES BT_OP(BT_OGF_LE, 0x008A) /* 0x208A */
 
 struct bt_hci_cp_le_read_remote_supported_capabilities {
@@ -2657,6 +2685,35 @@ struct bt_hci_cp_le_write_cached_remote_supported_capabilities {
 	uint16_t t_pm_times_supported;
 	uint8_t  t_sw_time_supported;
 	uint8_t  tx_snr_capability;
+} __packed;
+
+#define BT_HCI_OP_LE_CS_WRITE_CACHED_REMOTE_SUPPORTED_CAPABILITIES_V2 \
+	BT_OP(BT_OGF_LE, 0x00A6) /* 0x20A6 */
+
+struct bt_hci_cp_le_write_cached_remote_supported_capabilities_v2 {
+	uint16_t handle;
+	uint8_t  num_config_supported;
+	uint16_t max_consecutive_procedures_supported;
+	uint8_t  num_antennas_supported;
+	uint8_t  max_antenna_paths_supported;
+	uint8_t  roles_supported;
+	uint8_t  modes_supported;
+	uint8_t  rtt_capability;
+	uint8_t  rtt_aa_only_n;
+	uint8_t  rtt_sounding_n;
+	uint8_t  rtt_random_payload_n;
+	uint16_t nadm_sounding_capability;
+	uint16_t nadm_random_capability;
+	uint8_t  cs_sync_phys_supported;
+	uint16_t subfeatures_supported;
+	uint16_t t_ip1_times_supported;
+	uint16_t t_ip2_times_supported;
+	uint16_t t_fcs_times_supported;
+	uint16_t t_pm_times_supported;
+	uint8_t  t_sw_time_supported;
+	uint8_t  tx_snr_capability;
+	uint16_t  t_ip2_ipt_times_supported;
+	uint8_t  t_sw_ipt_time_supported;
 } __packed;
 
 #define BT_HCI_OP_LE_CS_SECURITY_ENABLE BT_OP(BT_OGF_LE, 0x008C) /* 0x208C */
@@ -2865,7 +2922,7 @@ struct bt_hci_op_le_cs_test {
 	uint8_t  t_pm_time;
 	uint8_t  t_sw_time;
 	uint8_t  tone_antenna_config_selection;
-	uint8_t  reserved;
+	uint8_t  cs_enhancements_1;
 	uint8_t  snr_control_initiator;
 	uint8_t  snr_control_reflector;
 	uint16_t drbg_nonce;
@@ -2895,7 +2952,7 @@ struct bt_hci_cp_le_cs_create_config {
 	uint8_t  channel_selection_type;
 	uint8_t  ch3c_shape;
 	uint8_t  ch3c_jump;
-	uint8_t  reserved;
+	uint8_t  cs_enhancements_1;
 } __packed;
 
 #define BT_HCI_OP_LE_CS_REMOVE_CONFIG BT_OP(BT_OGF_LE, 0x0091) /* 0x2091 */
@@ -3871,6 +3928,7 @@ struct bt_hci_evt_le_read_all_remote_feat_complete {
 #define BT_HCI_LE_CS_TX_SNR_CAPABILITY_30DB_MASK BIT(4)
 
 #define BT_HCI_EVT_LE_CS_READ_REMOTE_SUPPORTED_CAPABILITIES_COMPLETE 0x2C
+
 struct bt_hci_evt_le_cs_read_remote_supported_capabilities_complete {
 	uint8_t  status;
 	uint16_t conn_handle;
@@ -3894,6 +3952,35 @@ struct bt_hci_evt_le_cs_read_remote_supported_capabilities_complete {
 	uint16_t t_pm_times_supported;
 	uint8_t  t_sw_time_supported;
 	uint8_t  tx_snr_capability;
+} __packed;
+
+#define BT_HCI_EVT_LE_CS_READ_REMOTE_SUPPORTED_CAPABILITIES_COMPLETE_V2 0x38
+
+struct bt_hci_evt_le_cs_read_remote_supported_capabilities_complete_v2 {
+	uint8_t  status;
+	uint16_t conn_handle;
+	uint8_t  num_config_supported;
+	uint16_t max_consecutive_procedures_supported;
+	uint8_t  num_antennas_supported;
+	uint8_t  max_antenna_paths_supported;
+	uint8_t  roles_supported;
+	uint8_t  modes_supported;
+	uint8_t  rtt_capability;
+	uint8_t  rtt_aa_only_n;
+	uint8_t  rtt_sounding_n;
+	uint8_t  rtt_random_payload_n;
+	uint16_t nadm_sounding_capability;
+	uint16_t nadm_random_capability;
+	uint8_t  cs_sync_phys_supported;
+	uint16_t subfeatures_supported;
+	uint16_t t_ip1_times_supported;
+	uint16_t t_ip2_times_supported;
+	uint16_t t_fcs_times_supported;
+	uint16_t t_pm_times_supported;
+	uint8_t  t_sw_time_supported;
+	uint8_t  tx_snr_capability;
+	uint16_t t_ip2_ipt_times_supported;
+	uint8_t  t_sw_ipt_time_supported;
 } __packed;
 
 #define BT_HCI_EVT_LE_CS_READ_REMOTE_FAE_TABLE_COMPLETE 0x2D
@@ -3932,7 +4019,7 @@ struct bt_hci_evt_le_cs_config_complete {
 	uint8_t  channel_selection_type;
 	uint8_t  ch3c_shape;
 	uint8_t  ch3c_jump;
-	uint8_t  reserved;
+	uint8_t  cs_enhancements_1;
 	uint8_t  t_ip1_time;
 	uint8_t  t_ip2_time;
 	uint8_t  t_fcs_time;
@@ -4322,6 +4409,8 @@ struct bt_hci_evt_le_conn_rate_change {
 
 #define BT_EVT_MASK_LE_FRAME_SPACE_UPDATE_COMPLETE BT_EVT_BIT(52)
 #define BT_EVT_MASK_LE_CONN_RATE_CHANGE            BT_EVT_BIT(54)
+
+#define BT_EVT_MASK_LE_CS_READ_REMOTE_SUPPORTED_CAPABILITIES_COMPLETE_V2 BT_EVT_BIT(55)
 
 /** HCI Error Codes, BT Core Spec v5.4 [Vol 1, Part F]. */
 #define BT_HCI_ERR_SUCCESS                      0x00

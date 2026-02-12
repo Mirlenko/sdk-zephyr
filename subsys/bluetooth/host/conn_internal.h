@@ -550,6 +550,9 @@ void bt_conn_notify_frame_space_update_complete(struct bt_conn *conn,
 void bt_conn_notify_remote_cs_capabilities(struct bt_conn *conn, uint8_t status,
 					  struct bt_conn_le_cs_capabilities *params);
 
+void bt_conn_notify_remote_cs_capabilities_v2(struct bt_conn *conn, uint8_t status,
+					  struct bt_conn_le_cs_capabilities_v2 *params);
+
 void bt_conn_notify_remote_cs_fae_table(struct bt_conn *conn, uint8_t status,
 					struct bt_conn_le_cs_fae_table *params);
 

@@ -3681,6 +3681,23 @@ void bt_conn_notify_remote_cs_capabilities(struct bt_conn *conn, uint8_t status,
 	}
 }
 
+void bt_conn_notify_remote_cs_capabilities_v2(struct bt_conn *conn, uint8_t status,
+	struct bt_conn_le_cs_capabilities_v2 *params)
+{
+	BT_CONN_CB_DYNAMIC_FOREACH(callback) {
+		if (callback->le_cs_read_remote_capabilities_complete_v2) {
+			callback->le_cs_read_remote_capabilities_complete_v2(conn, status,
+										params);
+		}
+	}
+
+	STRUCT_SECTION_FOREACH(bt_conn_cb, cb) {
+		if (cb->le_cs_read_remote_capabilities_complete_v2) {
+			cb->le_cs_read_remote_capabilities_complete_v2(conn, status, params);
+		}
+	}
+}
+
 void bt_conn_notify_remote_cs_fae_table(struct bt_conn *conn, uint8_t status,
 					struct bt_conn_le_cs_fae_table *params)
 {
