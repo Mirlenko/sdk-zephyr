@@ -1652,6 +1652,7 @@ flagged.
         "CRC",  # Used in TI CC13x2 / CC26x2 SDK comment
         "DEEP_SLEEP",  # #defined by RV32M1 in ext/
         "DESCRIPTION",
+        "DTM_FEM_LOOPBACK",  # used for DTM FEM loopback verification test
         "ERR",
         "ESP_DIF_LIBRARY",  # Referenced in CMake comment
         "EXPERIMENTAL",
